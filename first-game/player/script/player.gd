@@ -2,6 +2,10 @@ class_name  Player extends CharacterBody2D
 
 @export var move_speed : float = 150
 
+const DEBUG_JUMP = preload("uid://ds07lqp6ctdo0")
+
+
+
 #region /// state 
 var states : Array[Playerstate]
 var current_state : Playerstate : 
@@ -68,3 +72,11 @@ func updata_direction() -> void:
 	direction = Input.get_vector("left","right","up","down")
 	pass
 	
+func add_debug(color : Color = Color.RED) -> void:
+	var d : Node2D = DEBUG_JUMP.instantiate()
+	get_tree().root.add_child(d)
+	d.global_position = global_position
+	d.modulate = color
+	await get_tree().create_timer(3).timeout
+	d.queue_free()
+	pass

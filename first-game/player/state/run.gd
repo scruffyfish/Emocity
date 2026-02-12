@@ -15,7 +15,8 @@ func exit() -> void:
 	pass
 
 func	  handled_input(_event : InputEvent) -> Playerstate:
-	
+	if _event.is_action_pressed("jump"):
+		return jump
 	return next_state
 	
 	
@@ -33,4 +34,6 @@ func process(delta: float) -> Playerstate:
 
 func physics_process(delta: float) -> Playerstate:
 	player.velocity.x = player.direction.x * player.move_speed
+	if player.is_on_floor() == false:
+		return fall
 	return next_state

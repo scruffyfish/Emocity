@@ -9,7 +9,6 @@ func enter() -> void:
 	pass
 
 func exit() -> void:
-	
 	pass
 
 func	  handled_input(_event : InputEvent) -> Playerstate:
@@ -25,10 +24,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func process(delta: float) -> Playerstate:
-	if player.direction.x != 0:
-		return run
+	
 	return next_state
 
 func physics_process(delta: float) -> Playerstate:
-	player.velocity.x = 0
+	if player.is_on_floor():
+		player.add_debug(Color.RED)
+		return idle
+	player.velocity.x = player.direction.x * player.move_speed
 	return next_state
