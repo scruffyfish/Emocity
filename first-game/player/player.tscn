@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bopf1ujpnjuwl"]
+
+[ext_resource type="Script" uid="uid://bt1ovu2ai5s14" path="res://player/script/player.gd" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://k8ngcldbmxdq" path="res://player/state/idle.gd" id="2_g1dw6"]
+[ext_resource type="Script" uid="uid://dfeef2pdccff8" path="res://player/state/run.gd" id="3_yw30f"]
+[ext_resource type="Script" uid="uid://ct8yftpoptb0y" path="res://player/state/jump.gd" id="4_qjkh3"]
+[ext_resource type="Script" uid="uid://br23pr5n7ii0y" path="res://player/state/fall.gd" id="5_g6k8r"]
+
+[sub_resource type="Gradient" id="Gradient_kqu6x"]
+offsets = PackedFloat32Array(0, 0.516, 0.996, 1)
+colors = PackedColorArray(0.68354756, 0.27154815, 0.2153885, 1, 0.916, 0.916, 0.916, 1, 3.5616756e-06, 0.6820739, 0.750552, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oul6g"]
+gradient = SubResource("Gradient_kqu6x")
+width = 18
+height = 48
+fill_from = Vector2(0, 0.020231213)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
+size = Vector2(16, 46)
+
+[node name="Player" type="CharacterBody2D" unique_id=641918341]
+script = ExtResource("1_oul6g")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1100582493]
+position = Vector2(0, -24)
+texture = SubResource("GradientTexture2D_oul6g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=106168737]
+position = Vector2(0, -23)
+shape = SubResource("RectangleShape2D_rkbax")
+
+[node name="states" type="Node" parent="." unique_id=1508888374]
+
+[node name="idle" type="Node" parent="states" unique_id=1221858001]
+unique_name_in_owner = true
+script = ExtResource("2_g1dw6")
+
+[node name="run" type="Node" parent="states" unique_id=906583654]
+unique_name_in_owner = true
+script = ExtResource("3_yw30f")
+
+[node name="jump" type="Node" parent="states" unique_id=927824910]
+unique_name_in_owner = true
+script = ExtResource("4_qjkh3")
+
+[node name="fall" type="Node" parent="states" unique_id=2026345350]
+unique_name_in_owner = true
+script = ExtResource("5_g6k8r")
+
+[node name="Label" type="Label" parent="." unique_id=1379273271]
+offset_left = -20.0
+offset_top = -68.0
+offset_right = 20.0
+offset_bottom = -45.0
+theme_override_font_sizes/font_size = 8
+text = "lable"
+horizontal_alignment = 1
