@@ -8,6 +8,7 @@ var next_state : Playerstate
 @onready var idle: Playerstateidle = %idle
 @onready var jump: Playerstatejump = %jump
 @onready var fall: Playerstatefall = %fall
+@onready var crouch: Playerstatecrouch = %crouch
 #endregion
 
 func	 init() -> void:

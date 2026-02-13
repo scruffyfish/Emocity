@@ -4,7 +4,10 @@ class_name  Player extends CharacterBody2D
 
 const DEBUG_JUMP = preload("uid://ds07lqp6ctdo0")
 
-
+@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var collisionstand: CollisionShape2D = $Collisionstand
+@onready var collisioncrouch: CollisionShape2D = $Collisioncrouch
+@onready var oneway_ray_cast_2d: RayCast2D = $onewayRayCast2D
 
 #region /// state 
 var states : Array[Playerstate]

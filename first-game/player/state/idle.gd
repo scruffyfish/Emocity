@@ -28,6 +28,8 @@ func _ready() -> void:
 func process(delta: float) -> Playerstate:
 	if player.direction.x != 0:
 		return run
+	elif player.direction.y > 0:
+		return crouch
 	return next_state
 
 func physics_process(delta: float) -> Playerstate:
