@@ -8,7 +8,7 @@ func	 init() -> void:
 	
 func enter() -> void:
 	player.add_debug(Color.GREEN)
-	player.velocity.y -= jump_velocity
+	player.velocity.y = -jump_velocity
 	pass
 
 func exit() -> void:
@@ -17,7 +17,7 @@ func exit() -> void:
 
 func	  handled_input(event : InputEvent) -> Playerstate:
 	if event.is_action_released("jump"):
-		player.velocity.y *= 0.5
+		player.velocity.y *= 0.535
 		return fall
 	return next_state
 	

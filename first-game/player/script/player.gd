@@ -15,6 +15,7 @@ var previous_state : Playerstate:
 #endregion
 var direction : Vector2 = Vector2.ZERO
 var gravity : float = 980
+var gravity_mulitplier : float = 1.0
 
 func _unhandled_input(event: InputEvent) -> void:
 	change_state(current_state.handled_input(event))
@@ -31,7 +32,7 @@ func  _process(delta: float) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	velocity.y += gravity * delta
+	velocity.y += gravity * delta * gravity_mulitplier
 	move_and_slide()
 	change_state(current_state.physics_process(delta))
 	pass
