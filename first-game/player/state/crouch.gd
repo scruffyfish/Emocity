@@ -7,17 +7,18 @@ func	 init() -> void:
 	pass
 	
 func enter() -> void:
+	player.animation_player.play("crouch")
 	player.collisionstand.disabled = true
 	player.collisioncrouch.disabled = false
-	player.sprite_2d.scale.y = 0.625
-	player.sprite_2d.position.y = -15
+	#player.sprite_2d.scale.y = 0.625
+	#player.sprite_2d.position.y = -25
 	pass
 
 func exit() -> void:
 	player.collisionstand.disabled = false
 	player.collisioncrouch.disabled = true
-	player.sprite_2d.scale.y = 1
-	player.sprite_2d.position.y = -24
+	#player.sprite_2d.scale.y = 1
+	#player.sprite_2d.position.y = -40
 	#player.position.y += 4 #摁蹲直接下跳下面那个是摁住蹲在跳再下跳
 	pass
 

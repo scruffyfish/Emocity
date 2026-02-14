@@ -11,6 +11,7 @@ func	 init() -> void:
 	pass
 	
 func enter() -> void:
+	player.animation_player.play("fall")
 	player.gravity_mulitplier = fall_gravity_mulitplier
 	if player.previous_state == jump:
 		coytoe_timer = 0

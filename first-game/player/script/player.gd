@@ -8,7 +8,7 @@ const DEBUG_JUMP = preload("uid://ds07lqp6ctdo0")
 @onready var collisionstand: CollisionShape2D = $Collisionstand
 @onready var collisioncrouch: CollisionShape2D = $Collisioncrouch
 @onready var oneway_ray_cast_2d: RayCast2D = $onewayRayCast2D
-
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 #region /// state 
 var states : Array[Playerstate]
 var current_state : Playerstate : 
@@ -73,7 +73,14 @@ func change_state(new_state : Playerstate) -> void:
 	
 func updata_direction() -> void:
 	var prev_direction : Vector2 = direction
-	direction = Input.get_vector("left","right","up","down")
+	var x_axis = Input.get_axis("left","right")
+	var y_axis = Input.get_axis("up","down")
+	direction = Vector2(x_axis,y_axis)
+	if prev_direction.x != direction.x:
+		if direction.x < 0:
+			sprite_2d.flip_h = true
+		elif direction.x > 0:
+			sprite_2d.flip_h = false
 	pass
 	
 func add_debug(color : Color = Color.RED) -> void:
