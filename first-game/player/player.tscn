@@ -89,7 +89,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.6, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [24, 25, 26, 27, 28]
@@ -160,6 +160,9 @@ script = ExtResource("4_qjkh3")
 [node name="fall" type="Node" parent="states" unique_id=2026345350]
 unique_name_in_owner = true
 script = ExtResource("5_g6k8r")
+fall_gravity_mulitplier = null
+coytoe_time = null
+jump_buffer_time = null
 
 [node name="crouch" type="Node" parent="states" unique_id=23567953]
 unique_name_in_owner = true

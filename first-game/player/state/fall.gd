@@ -11,7 +11,8 @@ func	 init() -> void:
 	pass
 	
 func enter() -> void:
-	player.animation_player.play("fall")
+	player.animation_player.play("jump")
+	player.animation_player.pause()
 	player.gravity_mulitplier = fall_gravity_mulitplier
 	if player.previous_state == jump:
 		coytoe_timer = 0
@@ -42,6 +43,7 @@ func _ready() -> void:
 func process(delta: float) -> Playerstate:
 	coytoe_timer -= delta
 	buffer_timer -= delta
+	set_jump_farme()
 	return next_state
 
 func physics_process(delta: float) -> Playerstate:
@@ -52,3 +54,8 @@ func physics_process(delta: float) -> Playerstate:
 		return idle
 	player.velocity.x = player.direction.x * player.move_speed
 	return next_state
+
+func set_jump_farme() -> void:
+	var farme : float = remap(player.velocity.y,0.0,player.max_fall_vecolity,0.5,1.0)
+	player.animation_player.seek(farme,true)
+	pass

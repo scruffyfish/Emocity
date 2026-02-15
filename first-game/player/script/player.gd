@@ -1,6 +1,7 @@
 class_name  Player extends CharacterBody2D
 
 @export var move_speed : float = 150
+@export var max_fall_vecolity = 600
 
 const DEBUG_JUMP = preload("uid://ds07lqp6ctdo0")
 
@@ -36,6 +37,7 @@ func  _process(delta: float) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta * gravity_mulitplier
+	velocity.y = clampf(velocity.y, -2000, max_fall_vecolity)
 	move_and_slide()
 	change_state(current_state.physics_process(delta))
 	pass

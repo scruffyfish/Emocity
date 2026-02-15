@@ -8,6 +8,7 @@ func	 init() -> void:
 	
 func enter() -> void:
 	player.animation_player.play("jump")
+	player.animation_player.pause()
 	player.add_debug(Color.GREEN)
 	player.velocity.y = -jump_velocity
 	pass
@@ -30,7 +31,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func process(delta: float) -> Playerstate:
-	
+	set_jump_farme()
 	return next_state
 
 func physics_process(delta: float) -> Playerstate:
@@ -40,3 +41,8 @@ func physics_process(delta: float) -> Playerstate:
 		return fall
 	player.velocity.x = player.direction.x * player.move_speed
 	return next_state
+
+func set_jump_farme() -> void:
+	var farme : float = remap(player.velocity.y,-jump_velocity,0.0,0.0,0.5)
+	player.animation_player.seek(farme,true)
+	pass
