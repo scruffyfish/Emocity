@@ -124,6 +124,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" unique_id=641918341]
+z_index = 1
 collision_layer = 0
 collision_mask = 3
 script = ExtResource("1_oul6g")
@@ -183,3 +184,6 @@ collision_mask = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=988874833]
 libraries/ = SubResource("AnimationLibrary_ebec5")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=422358139]
+position = Vector2(0, -38)
